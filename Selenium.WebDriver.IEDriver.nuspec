@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Selenium.WebDriver.IEDriver</id>
+    <version>2.35.3.0</version>
+    <authors>jsakamoto</authors>
+    <description>
+      Download and install IE Driver(x86) for Selenium WebDriver into your Unit Test Project on the fly.
+      "IEDriverServer.exe" added as a linked project item, and copied to bin folder at the build.
+      NuGet package restoring ready, and no need to commit "IEDriverServer.exe" binary into source code control ripository.
+      / Selenium WebDriver用 IE Driver(x86) をその場でダウンロードし単体テストプロジェクトに追加します。
+      "IEDriverServer.exe" はリンクされたアイテムとしてプロジェクトに追加され、ビルド時に bin フォルダにコピーされます。
+      NuGet パッケージの復元に対応済み、"IEDriver.exe" をソース管理リポジトリに登録する必要はありません。
+    </description>
+    <language>en-US</language>
+    <projectUrl>https://github.com/jsakamoto/selenium-webdriver-iedriver/</projectUrl>
+    <!--
+    <licenseUrl></licenseUrl>
+    -->
+  </metadata>
+  <files>
+    <file src="README-IEDriver.txt" target="content"/>
+    <file src="Init.ps1" target="tools"/>
+    <file src="Install.ps1" target="tools"/>
+    <file src="Uninstall.ps1" target="tools"/>
+  </files>
+</package>
