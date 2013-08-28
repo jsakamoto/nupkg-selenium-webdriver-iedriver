@@ -10,7 +10,7 @@ This NuGet package download and install IE Driver(x86) for Selenium WebDriver in
 
 "IEDriverServer.exe" はリンクされたアイテムとしてプロジェクトに追加され、ビルド時に bin フォルダにコピーされます。
 
-NuGet package restoring ready, and no need to commit "IEDriverServer.exe" binary into source code control ripository.
+NuGet package restoring ready, and no need to commit "IEDriverServer.exe" binary into source code control repository.
 
 NuGet パッケージの復元に対応済み、"IEDriver.exe" をソース管理リポジトリに登録する必要はありません。
 
