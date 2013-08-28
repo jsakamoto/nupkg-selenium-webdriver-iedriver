@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>2.35.3.1</version>
+    <version>2.35.3.2</version>
     <authors>jsakamoto</authors>
     <description>
       Download and install IE Driver(x86) for Selenium WebDriver into your Unit Test Project on the fly.
@@ -14,6 +14,7 @@
     </description>
     <language>en-US</language>
     <projectUrl>https://github.com/jsakamoto/selenium-webdriver-iedriver/</projectUrl>
+    <tags>Selenium WebDriver</tags>
     <!--
     <licenseUrl></licenseUrl>
     -->
