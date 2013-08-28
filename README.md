@@ -2,9 +2,11 @@
 
 ## What's this? / これは何?
 
-This NuGet package download and install IE Driver(x86) for Selenium WebDriver into your Unit Test Project on the fly. 
+This NuGet package download and install IE Driver(x86) for Selenium WebDriver into your Unit Test Project on the fly.  
+(This package dose not contain IEDriverServer.exe, but add the avility of automatically downloading IEDriverServer.exe form official site to your project.)
 
-この NuGet パッケージは、Selenium WebDriver用 IE Driver(x86) をその場でダウンロードし単体テストプロジェクトに追加します。
+この NuGet パッケージは、Selenium WebDriver用 IE Driver(x86) をその場でダウンロードし単体テストプロジェクトに追加します。  
+(この NuGet パッケージには IEDriverSerevr.exe は含まれません、公式サイトから IEDriverServer.exe を自動でダウンロードする能力をプロジェクトに追加します)
 
 "IEDriverServer.exe" added as a linked project item, and copied to bin folder at the build.
 
