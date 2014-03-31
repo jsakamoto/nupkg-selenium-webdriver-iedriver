@@ -1,7 +1,7 @@
 ﻿param($installPath, $toolsPath, $package, $project)
 
 $driverFile = "IEDriverServer.exe"
-$downloadUrl = "https://selenium-release.storage.googleapis.com/2.40/IEDriverServer_Win32_2.40.0.zip"
+$downloadUrl = "https://selenium-release.storage.googleapis.com/2.41/IEDriverServer_Win32_2.41.0.zip"
 
 $contentPath = Join-Path $installPath "content"
 $driverPath = Join-Path $contentPath $driverFile
