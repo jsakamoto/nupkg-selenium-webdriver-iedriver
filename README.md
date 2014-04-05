@@ -23,7 +23,7 @@ For example, at the package manager console on Visual Studio, enter following co
 
     PM> Install-Package Selenium.WebDriver.IEDriver
  
- ## Detail / 詳細
+## Detail / 詳細
 
 ### How to configure HTTP proxy? / プロクシの設定
 
