@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>2.42.0.0</version>
+    <version>2.43.0.0</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (Install on the fly, does not make your source repository to fat.)</summary>
     <description>
@@ -12,12 +12,19 @@
       / Selenium WebDriver用 IE Driver(x86) をその場でダウンロードし単体テストプロジェクトに追加します。
       "IEDriverServer.exe" はリンクされたアイテムとしてプロジェクトに追加され、ビルド時に bin フォルダにコピーされます。
       NuGet パッケージの復元に対応済み、"IEDriver.exe" をソース管理リポジトリに登録する必要はありません。
+      / The installing/uninstalling script codes that contained this package are free and unencumbered software released into the public domain.
+      / "iedriverserver.exe" is licensed under the Apache license v.2.0.
     </description>
     <language>en-US</language>
     <projectUrl>https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver/</projectUrl>
+    <licenseUrl>http://unlicense.org</licenseUrl>
     <tags>Selenium WebDriver</tags>
     <releaseNotes>
       <![CDATA[
+      v.2.43
+      - Update package.
+      v.2.42.0.1
+      - Fix: Installing this package was fail when .csproj file and packages folder are in a same folder.
       v.2.42
       - Update package.
       v.2.41.0.1
@@ -25,9 +32,6 @@
       - Fix: Occur exception at Add-Type in init.ps1 when installing the package.
       ]]>
     </releaseNotes>
-    <!--
-    <licenseUrl></licenseUrl>
-    -->
   </metadata>
   <files>
     <file src="README-IEDriver.txt" target="content"/>
