@@ -1,5 +1,7 @@
 # NuGet package - Selenium WebDriver IEDriver
 
+[![NuGet Package](https://img.shields.io/nuget/v/Selenium.WebDriver.IEDriver.svg)](https://www.nuget.org/packages/Selenium.WebDriver.IEDriver/)
+
 ## What's this? / これは何?
 
 This NuGet package install IE Driver(x86) for Selenium WebDriver into your Unit Test Project.
