@@ -18,7 +18,7 @@
     <language>en-US</language>
     <projectUrl>https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver/</projectUrl>
     <licenseUrl>http://unlicense.org/UNLICENSE</licenseUrl>
-    <tags>Selenium WebDriver IEDriverServer</tags>
+    <tags>Selenium WebDriver IEDriverServer iedriver</tags>
     <releaseNotes>
       <![CDATA[
 	  v.2.53
