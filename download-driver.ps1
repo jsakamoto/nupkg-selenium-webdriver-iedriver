@@ -1,7 +1,7 @@
 # constants
-$version = "2.52"
+$version = "2.53"
 $driverName = "IEDriverServer.exe"
-$zipName = "IEDriverServer_Win32_$version.2.zip"
+$zipName = "IEDriverServer_Win32_$version.0.zip"
 $downloadurl = "https://selenium-release.storage.googleapis.com/$version/$zipName"
 
 # move current folder to where contains this .ps1 script file.
