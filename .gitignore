@@ -1,3 +1,9 @@
 /*.nupkg
 /*.zip
 /IEDriverServer.exe
+.vs/
+bin/
+obj/
+*.suo
+*.user
+packages/
