@@ -8,9 +8,9 @@ This NuGet package install IE Driver(x86) for Selenium WebDriver into your Unit 
 
 この NuGet パッケージは、Selenium WebDriver用 IE Driver(x86) を単体テストプロジェクトに追加します。
 
-"IEDriverServer.exe" added as a linked project item, and copied to bin folder at the build.
+"IEDriverServer.exe" does not appear in Solution Explorer, but it is copied to bin folder from package folder when the build process.
 
-"IEDriverServer.exe" はリンクされたアイテムとしてプロジェクトに追加され、ビルド時に bin フォルダにコピーされます。
+"IEDriverServer.exe" はソリューションエクスプローラ上には現れませんが、ビルド時にパッケージフォルダから bin フォルダへコピーされます。
 
 NuGet package restoring ready, and no need to commit "IEDriverServer.exe" binary into source code control repository.
 
@@ -36,7 +36,7 @@ folder.
       |   +-- Selenium.WebDriver.IEDriver.{version}/
       |       +-- driver/
       |       |   +-- IEDriverServer.exe
-      |       +-- tools/
+      |       +-- build/
       +-- {project folder}/
           +-- bin/
               +-- Debug/
