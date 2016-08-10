@@ -2,7 +2,7 @@
   <Target Name="CopyIEDriverToBin" BeforeTargets="AfterBuild">
     <PropertyGroup>
       <IEDriverSrcPath>$(MSBuildThisFileDirectory)..\driver\IEDriverServer.exe</IEDriverSrcPath>
-      <IEDriverTargetPath Condition=" '$(IEDriverTargetPath)' == '' ">$(ProjectDir)$(OutputPath)</IEDriverTargetPath>
+      <IEDriverTargetPath Condition=" '$(IEDriverTargetPath)' == '' ">$(TargetDir)</IEDriverTargetPath>
     </PropertyGroup>
     <Copy SourceFiles="$(IEDriverSrcPath)" DestinationFiles="$(IEDriverTargetPath)IEDriverServer.exe" SkipUnchangedFiles="true"></Copy>
   </Target>
