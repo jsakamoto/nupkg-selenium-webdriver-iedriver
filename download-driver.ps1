@@ -1,6 +1,6 @@
 # constants
-$version = "2.53"
-$build = "1"
+$version = "3.0"
+$build = "0"
 $driverName = "IEDriverServer.exe"
 $zipName = "IEDriverServer_Win32_$version.$build.zip"
 $downloadurl = "https://selenium-release.storage.googleapis.com/$version/$zipName"
