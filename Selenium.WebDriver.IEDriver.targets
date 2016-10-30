@@ -3,10 +3,52 @@
     <IEDriverSrcPath>$(MSBuildThisFileDirectory)..\driver\IEDriverServer.exe</IEDriverSrcPath>
     <IEDriverTargetPath Condition=" '$(IEDriverTargetPath)' == '' ">$(TargetDir)</IEDriverTargetPath>
   </PropertyGroup>
-  <Target Name="CopyIEDriverToBin" BeforeTargets="AfterBuild">
+  <!-- Detect is project type Web or Not. -->
+  <Choose>
+    <When Condition="'$(ProjectTypeIsWeb)' == ''">
+      <PropertyGroup>
+        <!-- Reference: http://www.mztools.com/Articles/2008/MZ2008017.aspx -->
+        <!-- HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\Projects -->
+        <ProjectTypeIsWeb Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(ProjectTypeGuids),'^(.*;)*{349c5851-65df-11da-9384-00065b846f21}(;.*)*$'))">true</ProjectTypeIsWeb>
+        <ProjectTypeIsWeb Condition="'$(ProjectTypeIsWeb)' == ''">false</ProjectTypeIsWeb>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <!-- Detect definition of compilation symbol that is "_PUBLISH_IEDRIVER", or "PublishIEDriver" msbuild property. -->
+  <Choose>
+    <When Condition="'$(PublishIEDriver)' == ''">
+      <PropertyGroup>
+        <PublishIEDriver Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants),'^(.*;)*_PUBLISH_IEDRIVER(;.*)*$'))">true</PublishIEDriver>
+        <PublishIEDriver Condition="'$(PublishIEDriver)' == ''">false</PublishIEDriver>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <!-- Setup driver file as project item if publishing driver file is enabled. -->
+  <Choose>
+    <When Condition="'$(PublishIEDriver)|$(ProjectTypeIsWeb)' == 'true|true'">
+      <ItemGroup>
+        <None Include="$(IEDriverSrcPath)">
+          <Link>IEDriverServer.exe</Link>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          <Visible>False</Visible>
+        </None>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(PublishIEDriver)|$(ProjectTypeIsWeb)' == 'true|false'">
+      <ItemGroup>
+        <Content Include="$(IEDriverSrcPath)">
+          <Link>IEDriverServer.exe</Link>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          <Visible>False</Visible>
+        </Content>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <!-- If publishing driver file is disabled (it's default behavior), define "copy" and "clean" build task. -->
+  <Target Name="CopyIEDriverToBin" BeforeTargets="AfterBuild" Condition="'$(PublishIEDriver)' == 'false'">
     <Copy SourceFiles="$(IEDriverSrcPath)" DestinationFiles="$(IEDriverTargetPath)IEDriverServer.exe" SkipUnchangedFiles="true"></Copy>
   </Target>
-  <Target Name="DeleteIEDriverFromBin" BeforeTargets="AfterClean">
+  <Target Name="DeleteIEDriverFromBin" BeforeTargets="AfterClean" Condition="'$(PublishIEDriver)' == 'false'">
     <Delete Files="$(IEDriverTargetPath)IEDriverServer.exe"></Delete>
   </Target>
 </Project>
