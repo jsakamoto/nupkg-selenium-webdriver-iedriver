@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>3.0.0.0</version>
+    <version>3.0.0.1-beta</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository to fat.)</summary>
     <description>
@@ -21,26 +21,29 @@
     <tags>Selenium WebDriver IEDriverServer iedriver</tags>
     <releaseNotes>
       <![CDATA[
-	  v.3.0
-	  - IE Driver 3.0 release
-	  v.2.53.1.1
+      v.3.0.0.1
+      - Add support for "clean" MSBuild task.
+      - Add support for publishing driver file when "_PUBLISH_IEDRIVE" compilation symbol is defined.
+	    v.3.0
+	    - IE Driver 3.0 release
+	    v.2.53.1.1
       - Fix: cause build error when specified absolute output path.
-	  v.2.53.1
-	  - IE Driver 2.53.1 release
-	  v.2.53.0.1
-	  - Change: Implement copy driver task as MSBuild script, and remove install/uninstall PwoerShell scripts.
-	  v.2.53
-	  - IE Driver 2.53 release
-	  v.2.52.2
-	  - IE Driver 2.52.2 release
+	    v.2.53.1
+	    - IE Driver 2.53.1 release
+	    v.2.53.0.1
+	    - Change: Implement copy driver task as MSBuild script, and remove install/uninstall PwoerShell scripts.
+	    v.2.53
+	    - IE Driver 2.53 release
+	    v.2.52.2
+	    - IE Driver 2.52.2 release
       v.2.49
-	  - IE Driver 2.49 release
+	    - IE Driver 2.49 release
       v.2.48
-	  - IE Driver 2.48 release
+	    - IE Driver 2.48 release
       v.2.47
-	  - IE Driver 2.47 release
+	    - IE Driver 2.47 release
       v.2.46
-	  - IE Driver 2.46 release
+	    - IE Driver 2.46 release
       v.2.45.0.3
       - Re-package to fix license URL.
       v.2.45.0.2
