@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>3.0.0.1</version>
+    <version>3.1.0.0</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository to fat.)</summary>
     <description>
@@ -21,6 +21,8 @@
     <tags>Selenium WebDriver IEDriverServer iedriver</tags>
     <releaseNotes>
       <![CDATA[
+	    v.3.1
+	    - IE Driver 3.1 release
       v.3.0.0.1
       - Add support for "clean" MSBuild task.
       - Add support for publishing driver file when "_PUBLISH_IEDRIVE" compilation symbol is defined.
