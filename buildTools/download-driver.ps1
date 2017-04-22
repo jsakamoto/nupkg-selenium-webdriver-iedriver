@@ -1,5 +1,5 @@
 # constants
-$version = "3.3"
+$version = "3.4"
 $build = "0"
 $driverName = "IEDriverServer.exe"
 $zipName = "IEDriverServer_Win32_$version.$build.zip"
@@ -16,7 +16,7 @@ $zipPath = Join-Path $downloadDir $zipName
 $driverPath = Join-Path $downloadDir $driverName
 
 # download driver .zip file if not exists.
-if (-not (Test-Path $zipPath)){
+if (-not (Test-Path $zipPath)) {
     (New-Object Net.WebClient).Downloadfile($downloadurl, $zipPath)
     if (Test-Path $driverPath) {
         del $driverPath 
