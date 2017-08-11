@@ -1,5 +1,5 @@
 # constants
-$version = "3.4"
+$version = "3.5"
 $build = "0"
 $driverName = "IEDriverServer.exe"
 $zipName = "IEDriverServer_Win32_$version.$build.zip"
@@ -29,8 +29,8 @@ if (-not (Test-Path $driverPath)) {
     $zipFile = $shell.NameSpace($zipPath)
 
     $zipFile.Items() | `
-    where {(Split-Path $_.Path -Leaf) -eq $driverName} | `
-    foreach {
+        where {(Split-Path $_.Path -Leaf) -eq $driverName} | `
+        foreach {
         $extractTo = $shell.NameSpace($downloadDir)
         $extractTo.copyhere($_.Path)
     }
