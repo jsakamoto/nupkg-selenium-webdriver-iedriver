@@ -4,7 +4,7 @@
     <id>Selenium.WebDriver.IEDriver</id>
     <version>3.13.0.0</version>
     <authors>jsakamoto</authors>
-    <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository to fat.)</summary>
+    <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository too fat.)</summary>
     <description>
       Install IE Driver(x86) for Selenium WebDriver into your Unit Test Project.
       "IEDriverServer.exe" is copied to bin folder from package folder when the build process.
