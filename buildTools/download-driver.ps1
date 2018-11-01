@@ -1,5 +1,5 @@
 # constants
-$version = "3.14"
+$version = "3.141"
 $build = "0"
 $driverName = "IEDriverServer.exe"
 $zipName = "IEDriverServer_Win32_$version.$build.zip"
