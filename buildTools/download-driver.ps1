@@ -1,6 +1,6 @@
 # constants
-$version = "3.141"
-$build = "59"
+$version = "3.150"
+$build = "0"
 $driverName = "IEDriverServer.exe"
 $zipName = "IEDriverServer_Win32_$version.$build.zip"
 $downloadurl = "https://selenium-release.storage.googleapis.com/$version/$zipName"
@@ -29,7 +29,7 @@ if (-not (Test-Path $driverPath)) {
     $zipFile = $shell.NameSpace($zipPath)
 
     $zipFile.Items() | `
-        where {(Split-Path $_.Path -Leaf) -eq $driverName} | `
+        where { (Split-Path $_.Path -Leaf) -eq $driverName } | `
         foreach {
         $extractTo = $shell.NameSpace($downloadDir)
         $extractTo.copyhere($_.Path)
