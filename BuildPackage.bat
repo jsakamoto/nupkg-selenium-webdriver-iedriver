@@ -7,4 +7,4 @@ echo.
 :SKIP_DOWNLOAD
 
 echo Packaging...
-.\buildTools\NuGet.exe pack .\src\Selenium.WebDriver.IEDriver.nuspec -Out .\dist
+.\buildTools\NuGet.exe pack .\src\Selenium.WebDriver.IEDriver.nuspec -OutputDirectory .\dist
