@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>3.150.1.0</version>
+    <version>3.150.1.1-beta</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository too fat.)</summary>
     <description>
@@ -17,7 +17,8 @@
     </description>
     <language>en-US</language>
     <projectUrl>https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver/</projectUrl>
-    <licenseUrl>http://unlicense.org/UNLICENSE</licenseUrl>
+    <repository type="git" url="https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver"/>
+    <license type="expression">Unlicense</license>
     <tags>Selenium WebDriver IEDriverServer iedriver</tags>
     <releaseNotes>
       <![CDATA[
