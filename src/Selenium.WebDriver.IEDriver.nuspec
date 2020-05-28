@@ -20,6 +20,7 @@
     <repository type="git" url="https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver"/>
     <license type="expression">Unlicense</license>
     <tags>Selenium WebDriver IEDriverServer iedriver</tags>
+	<icon>nupkg-icon.png</icon>
     <releaseNotes>
       <![CDATA[
 	    v.3.150.1
@@ -110,5 +111,6 @@
   <files>
     <file src="..\downloads\IEDriverServer.exe" target="driver"/>
     <file src="Selenium.WebDriver.IEDriver.targets" target="build"/>
+    <file src="..\.asset\nupkg-icon.png" target="/"/>
   </files>
 </package>
