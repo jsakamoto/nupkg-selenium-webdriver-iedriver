@@ -1,6 +1,17 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$(MSBuildThisFileDirectory)DefinePropertiesIEDriver.targets" />
 
   <Target Name="DefinePropertiesIEDriver" BeforeTargets="BeforeClean;BeforeBuild;BeforePublish">
+    
+    <!--
+    On a Non-SDK style project, and at the first build, "DefineProperties*.targets"
+    will not be imported and the driver file will not be copied into the output folder,
+    due to restoring "packages" folder is too late.
+
+    To avoid this problem, this target reevaluates "DefineProperties*.targets" if necessary
+    before the "Build" target.
+    -->
 
     <PropertyGroup>
       <IEDriverName Condition=" '$(IEDriverName)' == '' ">IEDriverServer.exe</IEDriverName>
@@ -41,7 +52,7 @@
 
   </Target><!-- Target Name="DefinePropertiesIEDriver" -->
 
-  <Target Name="IEDriverCheck" BeforeTargets="AfterClean;AfterBuild;CopyIEDriverToBin;DeleteIEDriverFromBin">
+  <Target Name="DumpPropertiesIEDriver" BeforeTargets="AfterClean;AfterBuild;CopyIEDriverToBin;DeleteIEDriverFromBin" Condition="'$(DumpPropertiesIEDriver)' == 'true'">
     <Message Importance="high" Text="IEDriverName is [$(IEDriverName)]" />
     <Message Importance="high" Text="IEDriverSrcPath is [$(IEDriverSrcPath)]" />
     <Message Importance="high" Text="IEDriverTargetPath is [$(IEDriverTargetPath)]" />

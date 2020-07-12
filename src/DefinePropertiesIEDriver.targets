@@ -1,0 +1,40 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <IEDriverName Condition=" '$(IEDriverName)' == '' ">IEDriverServer.exe</IEDriverName>
+    <IEDriverSrcPath Condition=" '$(IEDriverSrcPath)' == '' ">$(MSBuildThisFileDirectory)..\driver\$(IEDriverName)</IEDriverSrcPath>
+    <IEDriverTargetPath Condition=" '$(IEDriverTargetPath)' == '' ">$(TargetDir)</IEDriverTargetPath>
+  </PropertyGroup>
+
+  <!-- Detect is project type Web or Not. -->
+  <PropertyGroup Condition="'$(ProjectTypeIsWeb)' == ''">
+    <!-- Reference: http://www.mztools.com/Articles/2008/MZ2008017.aspx -->
+    <!-- HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\Projects -->
+    <ProjectTypeIsWeb Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(ProjectTypeGuids),'^(.*;)*{349c5851-65df-11da-9384-00065b846f21}(;.*)*$'))">true</ProjectTypeIsWeb>
+    <ProjectTypeIsWeb Condition="'$(ProjectTypeIsWeb)' == ''">false</ProjectTypeIsWeb>
+  </PropertyGroup>
+
+  <!-- Detect definition of compilation symbol that is "_PUBLISH_IEDRIVER", or "PublishIEDriver" msbuild property. -->
+  <PropertyGroup Condition="'$(PublishIEDriver)' == ''">
+    <PublishIEDriver Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants),'^(.*;)*_PUBLISH_IEDRIVER(;.*)*$'))">true</PublishIEDriver>
+    <PublishIEDriver Condition="'$(PublishIEDriver)' == ''">false</PublishIEDriver>
+  </PropertyGroup>
+
+  <!-- Setup driver file as project item if publishing driver file is enabled. -->
+  <ItemGroup Condition="'$(PublishIEDriver)|$(ProjectTypeIsWeb)' == 'true|true'">
+    <None Include="$(IEDriverSrcPath)">
+      <Link>$(IEDriverName)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PublishIEDriver)|$(ProjectTypeIsWeb)' == 'true|false'">
+    <Content Include="$(IEDriverSrcPath)">
+      <Link>$(IEDriverName)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+
+</Project>

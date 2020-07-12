@@ -21,7 +21,7 @@ NuGet パッケージの復元に対応済み、"IEDriver.exe" をソース管�
 For example, at the package manager console on Visual Studio, enter following command.  
 一例として、Visual Studio 上のパッケージ管理コンソールにて、下記のコマンドを入力してください。
 
-    PM> Install-Package Selenium.WebDriver.IEDriver -Version 3.150.1.1
+    PM> Install-Package Selenium.WebDriver.IEDriver -Version 3.150.1.2-beta -IncludePrerelease
 
 ## Detail / 詳細
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>3.150.1.1</version>
+    <version>3.150.1.2-beta</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository too fat.)</summary>
     <description>
@@ -23,96 +23,15 @@
 	<icon>nupkg-icon.png</icon>
     <releaseNotes>
       <![CDATA[
-	    v.3.150.1.1
-	    - Fix: driver file was not copied sometimes.
-	    v.3.150.1
-	    - IE Driver 3.150.1 release
-	    v.3.150.0
-	    - IE Driver 3.150.0 release
-	    v.3.141.59
-	    - IE Driver 3.141.59 release
-	    v.3.141.5
-	    - IE Driver 3.141.5 release
-	    v.3.141.0
-	    - IE Driver 3.141.0 release
-	    v.3.14.0
-	    - IE Driver 3.14.0 release
-	    v.3.13.0
-	    - IE Driver 3.13.0 release
-	    v.3.12.0
-	    - IE Driver 3.12.0 release
-	    v.3.11.1
-	    - IE Driver 3.11.1 release
-	    v.3.11.0
-	    - IE Driver 3.11.0 release
-	    v.3.10.0
-	    - IE Driver 3.10.0 release
-	    v.3.9.0
-	    - IE Driver 3.9.0 release
-	    v.3.8.0
-	    - IE Driver 3.8.0 release
-	    v.3.7.0
-	    - IE Driver 3.7.0 release
-	    v.3.6.0
-	    - IE Driver 3.6.0 release
-	    v.3.5.1
-	    - IE Driver 3.5.1 release
-	    v.3.5
-	    - IE Driver 3.5 release
-	    v.3.4
-	    - IE Driver 3.4 release
-	    v.3.3
-	    - IE Driver 3.3 release
-	    v.3.2
-	    - IE Driver 3.2 release
-	    v.3.1
-	    - IE Driver 3.1 release
-      v.3.0.0.1
-      - Add support for "clean" MSBuild task.
-      - Add support for publishing driver file when "_PUBLISH_IEDRIVE" compilation symbol is defined.
-	    v.3.0
-	    - IE Driver 3.0 release
-	    v.2.53.1.1
-      - Fix: cause build error when specified absolute output path.
-	    v.2.53.1
-	    - IE Driver 2.53.1 release
-	    v.2.53.0.1
-	    - Change: Implement copy driver task as MSBuild script, and remove install/uninstall PwoerShell scripts.
-	    v.2.53
-	    - IE Driver 2.53 release
-	    v.2.52.2
-	    - IE Driver 2.52.2 release
-      v.2.49
-	    - IE Driver 2.49 release
-      v.2.48
-	    - IE Driver 2.48 release
-      v.2.47
-	    - IE Driver 2.47 release
-      v.2.46
-	    - IE Driver 2.46 release
-      v.2.45.0.3
-      - Re-package to fix license URL.
-      v.2.45.0.2
-      - Include IEDriverServer.exe in this package, no downloading during package installation.
-      v.2.45
-      - IE Driver 2.45 release
-      v.2.44
-      - IE Driver 2.44 release
-      v.2.43
-      - Update package.
-      v.2.42.0.1
-      - Fix: Installing this package was fail when .csproj file and packages folder are in a same folder.
-      v.2.42
-      - Update package.
-      v.2.41.0.1
-      - HTTP proxy settings are available now.(1. HTTP_PROXY environment variable, 2. NuGet configuration)
-      - Fix: Occur exception at Add-Type in init.ps1 when installing the package.
+		v.3.150.1.2
+		- Fix: driver file was not copied sometimes.
       ]]>
     </releaseNotes>
   </metadata>
   <files>
     <file src="..\downloads\IEDriverServer.exe" target="driver"/>
     <file src="Selenium.WebDriver.IEDriver.targets" target="build"/>
+    <file src="DefinePropertiesIEDriver.targets" target="build"/>
     <file src="..\.asset\nupkg-icon.png" target="/"/>
   </files>
 </package>
