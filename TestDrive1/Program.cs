@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestDrive1
 {
@@ -15,9 +11,10 @@ namespace TestDrive1
             // 2. Browser zoom level keep to 100%.
             using (var driver = new OpenQA.Selenium.IE.InternetExplorerDriver())
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
                 driver.Navigate().GoToUrl("https://www.bing.com/");
                 driver.FindElementById("sb_form_q").SendKeys("Selenium WebDriver");
-                driver.FindElementById("sb_form_go").Click();
+                driver.FindElementByClassName("search").Click();
 
                 Console.WriteLine("OK");
                 Console.ReadKey(intercept: true);
