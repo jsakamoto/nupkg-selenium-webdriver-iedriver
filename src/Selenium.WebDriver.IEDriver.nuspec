@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>3.150.1.2</version>
+    <version>4.0.0</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository too fat.)</summary>
     <description>
@@ -23,8 +23,8 @@
 	<icon>nupkg-icon.png</icon>
     <releaseNotes>
       <![CDATA[
-		v.3.150.1.2
-		- Fix: driver file was not copied sometimes.
+		v.4.0.0
+	  - IE Driver 4.0.0 release
       ]]>
     </releaseNotes>
   </metadata>
