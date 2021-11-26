@@ -1,9 +1,8 @@
 # constants
-$version = "3.150"
-$build = "1"
+$version = "4.0.0"
 $driverName = "IEDriverServer.exe"
-$zipName = "IEDriverServer_Win32_$version.$build.zip"
-$downloadurl = "https://selenium-release.storage.googleapis.com/$version/$zipName"
+$zipName = "IEDriverServer_Win32_$version.zip"
+$downloadurl = "https://github.com/SeleniumHQ/selenium/releases/download/selenium-$version/$zipName"
 
 # move current folder to where contains this .ps1 script file.
 $scriptDir = Split-Path $MyInvocation.MyCommand.Path
