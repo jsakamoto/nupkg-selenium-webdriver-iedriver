@@ -1,34 +1,25 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
-using System;
 
-namespace TestDrive1
+// Please keep your IE configuration settings:
+// 1. Check on "Enable Protected Mode" at ALL zones in the "Security" tab of the Internet Options dialog.
+//    On Windows 11, you should do that via the Local Group Policy Editor. (see also https://www.urtech.ca/2016/01/solved-how-to-disable-protected-mode-in-internet-explorer-using-gpo/)
+// 2. Keep browser zoom level to 100%.
+var ieOptions = new InternetExplorerOptions
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Please keep your IE configuration settings:
-            // 1. Check on "Enable Protected Mode" at ALL zones in "Security" tab of Internet Options dialog.
-            // 2. Browser zoom level keep to 100%.
-            var ieOptions = new InternetExplorerOptions
-            {
-                // Uncomment these lines if you use Microsoft Edge IE mode.
-                // AttachToEdgeChrome = true,
-                // EdgeExecutablePath = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
-                IgnoreZoomLevel = true,
-            };
+    // These lines are needed to use Microsoft Edge IE mode.
+    AttachToEdgeChrome = true,
+    EdgeExecutablePath = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    IgnoreZoomLevel = true,
+};
 
-            using (var driver = new OpenQA.Selenium.IE.InternetExplorerDriver(ieOptions))
-            {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
-                driver.Navigate().GoToUrl("https://www.bing.com/");
-                driver.FindElement(By.Id("sb_form_q")).SendKeys("Selenium WebDriver");
-                driver.FindElement(By.ClassName("search")).Click();
+using var driver = new InternetExplorerDriver(ieOptions);
 
-                Console.WriteLine("OK");
-                Console.ReadKey(intercept: true);
-            }
-        }
-    }
-}
+driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+driver.Navigate().GoToUrl("https://www.bing.com/");
+driver.FindElement(By.Id("sb_form_q")).SendKeys("Selenium WebDriver");
+driver.FindElement(By.ClassName("search")).Click();
+
+Console.WriteLine("OK");
+Console.ReadKey(intercept: true);
+
