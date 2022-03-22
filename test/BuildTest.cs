@@ -1,64 +1,55 @@
-using System;
-using System.IO;
-using Selenium.WebDriver.IEDriver.NuPkg.Test.Lib;
-using Xunit;
+namespace Selenium.WebDriver.IEDriver.NuPkg.Test;
 
-namespace Selenium.WebDriver.IEDriver.NuPkg.Test
+[Parallelizable(ParallelScope.All)]
+public class BuildTest
 {
-    public class BuildTest : IDisposable
+    private WorkDirectory CreateWorkDir()
     {
-        private string WorkDir { get; }
+        var unitTestProjectDir = FileIO.FindContainerDirToAncestor("*.csproj");
+        return WorkDirectory.CreateCopyFrom(Path.Combine(unitTestProjectDir, "Project"), predicate: item => item.Name is not "obj" and not "bin");
+    }
 
-        public BuildTest()
-        {
-            WorkDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Guid.NewGuid().ToString("N"));
-            var srcDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Project");
-            Shell.XcopyDir(srcDir, WorkDir);
-        }
+    [Test]
+    public async Task Build_Test()
+    {
+        using var workDir = CreateWorkDir();
+        var dotnet = await XProcess.Start("dotnet", "build -o out", workDir).WaitForExitAsync();
+        dotnet.ExitCode.Is(0);
 
-        public void Dispose()
-        {
-            Shell.DeleteDir(WorkDir);
-        }
+        var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
+        File.Exists(driverFullPath).IsTrue();
+    }
 
-        [Fact]
-        public void Build_Test()
-        {
-            var exitCode = Shell.Run(WorkDir, "dotnet", "build", "-o", "out");
-            exitCode.Is(0);
+    [Test]
+    public async Task Publis_NoPublish_Test()
+    {
+        using var workDir = CreateWorkDir();
+        var dotnet = await XProcess.Start("dotnet", "publish -o out", workDir).WaitForExitAsync();
+        dotnet.ExitCode.Is(0);
 
-            var driverFullPath = Path.Combine(WorkDir, "out", "iedriverserver.exe");
-            File.Exists(driverFullPath).IsTrue();
-        }
+        var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
+        File.Exists(driverFullPath).IsFalse();
+    }
 
-        [Fact]
-        public void Publis_NoPublish_Test()
-        {
-            var exitCode = Shell.Run(WorkDir, "dotnet", "publish", "-o", "out");
-            exitCode.Is(0);
+    [Test]
+    public async Task Publish_with_MSBuildProp_Test()
+    {
+        using var workDir = CreateWorkDir();
+        var dotnet = await XProcess.Start("dotnet", "publish -o out -p:PublishIEDriver=true", workDir).WaitForExitAsync();
+        dotnet.ExitCode.Is(0);
 
-            var driverFullPath = Path.Combine(WorkDir, "out", "iedriverserver.exe");
-            File.Exists(driverFullPath).IsFalse();
-        }
+        var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
+        File.Exists(driverFullPath).IsTrue();
+    }
 
-        [Fact]
-        public void Publish_with_MSBuildProp_Test()
-        {
-            var exitCode = Shell.Run(WorkDir, "dotnet", "publish", "-o", "out", "-p:PublishIEDriver=true");
-            exitCode.Is(0);
+    [Test]
+    public async Task Publish_with_DefineConstants_Test()
+    {
+        using var workDir = CreateWorkDir();
+        var dotnet = await XProcess.Start("dotnet", "publish -o out -p:DefineConstants=_PUBLISH_IEDRIVER", workDir).WaitForExitAsync();
+        dotnet.ExitCode.Is(0);
 
-            var driverFullPath = Path.Combine(WorkDir, "out", "iedriverserver.exe");
-            File.Exists(driverFullPath).IsTrue();
-        }
-
-        [Fact]
-        public void Publish_with_DefineConstants_Test()
-        {
-            var exitCode = Shell.Run(WorkDir, "dotnet", "publish", "-o", "out", "-p:DefineConstants=_PUBLISH_IEDRIVER");
-            exitCode.Is(0);
-
-            var driverFullPath = Path.Combine(WorkDir, "out", "iedriverserver.exe");
-            File.Exists(driverFullPath).IsTrue();
-        }
+        var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
+        File.Exists(driverFullPath).IsTrue();
     }
 }

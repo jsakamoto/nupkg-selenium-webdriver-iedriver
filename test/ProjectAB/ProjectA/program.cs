@@ -1,6 +1,5 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.IE;
-using System;
+﻿using System;
+using OpenQA.Selenium;
 
 class Program
 {

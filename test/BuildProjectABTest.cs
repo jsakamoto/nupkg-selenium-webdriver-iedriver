@@ -1,36 +1,24 @@
-﻿using System;
-using System.IO;
-using Selenium.WebDriver.IEDriver.NuPkg.Test.Lib;
-using Xunit;
+﻿namespace Selenium.WebDriver.IEDriver.NuPkg.Test;
 
-namespace Selenium.WebDriver.IEDriver.NuPkg.Test
+[Parallelizable(ParallelScope.All)]
+public class BuildProjectABTest
 {
-    public class BuildProjectABTest : IDisposable
+    [Test, Platform("Win")]
+    public void Output_of_ProjectB_Contains_DriverFile_Test()
     {
-        private string WorkDir { get; }
+        var vsAppDir = Environment.GetEnvironmentVariable("VSAPPIDDIR");
+        if (vsAppDir == null) Assert.Inconclusive(@"This test requires Visual Studio and the definition of the ""VSAPPDIR"" environment variable to point out the directory where Visual Studio ""devenv.exe"" exists. (ex: VSAPPDIR=C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\)");
 
-        public BuildProjectABTest()
-        {
-            WorkDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Guid.NewGuid().ToString("N"));
-            var srcDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProjectAB");
-            Shell.XcopyDir(srcDir, WorkDir);
-        }
+        var unitTestProjectDir = FileIO.FindContainerDirToAncestor("*.csproj");
+        using var workDir = WorkDirectory.CreateCopyFrom(Path.Combine(unitTestProjectDir, "ProjectAB"), item => item.Name is not "obj" and not "bin");
 
-        public void Dispose()
-        {
-            Shell.DeleteDir(WorkDir);
-        }
+        var devenv = Path.Combine(vsAppDir, "devenv.exe");
+        var nuget = Path.Combine(unitTestProjectDir, "..", "buildTools", "nuget.exe");
+        XProcess.Start(nuget, "restore", workDir).WaitForExitAsync().Result.ExitCode.Is(0);
+        XProcess.Start(devenv, "ProjectAB.sln /Build", workDir).WaitForExitAsync().Result.ExitCode.Is(0);
 
-        [Fact]
-        public void Output_of_ProjectB_Contains_DriverFile_Test()
-        {
-            var devenv = @"C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\IDE\devenv.exe";
-            Shell.Run(WorkDir, "nuget", "restore").Is(0);
-            Shell.Run(WorkDir, devenv, "ProjectAB.sln", "/Build").Is(0);
-
-            var outDir = Path.Combine(WorkDir, "ProjectB", "bin", "Debug", "net472");
-            var driverFullPath = Path.Combine(outDir, "iedriverserver.exe");
-            File.Exists(driverFullPath).IsTrue();
-        }
+        var outDir = Path.Combine(workDir, "ProjectB", "bin", "Debug", "net472");
+        var driverFullPath = Path.Combine(outDir, "iedriverserver.exe");
+        File.Exists(driverFullPath).IsTrue();
     }
 }
