@@ -1,3 +1,7 @@
+v.4.0.0.1
+- Update README
+v.4.0.0
+- IE Driver 4.0.0 release
 v.3.150.1.2
 - Fix: driver file was not copied sometimes.
 v.3.150.1.1

@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>4.0.0</version>
+    <version>4.0.0.1</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository too fat.)</summary>
     <description>
       Install IE Driver(x86) for Selenium WebDriver into your Unit Test Project.
       "IEDriverServer.exe" is copied to bin folder from package folder when the build process.
       NuGet package restoring ready, and no need to commit "IEDriverServer.exe" binary into source code control repository.
-      / Selenium WebDriver用 IE Driver(x86) を単体テストプロジェクトに追加します。
-      "IEDriverServer.exe" はビルド時にパッケージフォルダから bin フォルダへコピーされます。
-      NuGet パッケージの復元に対応済み、"IEDriver.exe" をソース管理リポジトリに登録する必要はありません。
       / The MSBuild script that contained this package is free and unencumbered software released into the public domain.
       / "iedriverserver.exe" is licensed under the Apache license v.2.0.
     </description>
     <language>en-US</language>
     <projectUrl>https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver/</projectUrl>
-    <repository type="git" url="https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver"/>
+    <repository type="git" url="https://github.com/jsakamoto/nupkg-selenium-webdriver-iedriver" />
     <license type="expression">Unlicense</license>
     <tags>Selenium WebDriver IEDriverServer iedriver</tags>
-	<icon>nupkg-icon.png</icon>
+    <icon>nupkg-icon.png</icon>
+    <readme>README.md</readme>
     <releaseNotes>
       <![CDATA[
-		v.4.0.0
-	  - IE Driver 4.0.0 release
+		v.4.0.0.1
+	  - Update README
       ]]>
     </releaseNotes>
   </metadata>
   <files>
-    <file src="..\downloads\IEDriverServer.exe" target="driver"/>
-    <file src="Selenium.WebDriver.IEDriver.targets" target="build"/>
-    <file src="DefinePropertiesIEDriver.targets" target="build"/>
-    <file src="..\.asset\nupkg-icon.png" target="/"/>
+    <file src="..\downloads\IEDriverServer.exe" target="driver" />
+    <file src="Selenium.WebDriver.IEDriver.targets" target="build" />
+    <file src="DefinePropertiesIEDriver.targets" target="build" />
+    <file src="..\.asset\nupkg-icon.png" target="/" />
+    <file src="..\README.md" target="/" />
   </files>
 </package>
