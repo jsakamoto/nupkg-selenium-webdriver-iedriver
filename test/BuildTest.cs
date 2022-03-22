@@ -13,8 +13,7 @@ public class BuildTest
     public async Task Build_Test()
     {
         using var workDir = this.CreateWorkDir();
-        var dotnet = await XProcess.Start("dotnet", "build -o out", workDir).WaitForExitAsync();
-        dotnet.ExitCode.Is(0);
+        await XProcess.Start("dotnet", "build -o out", workDir).ExitCodeIs(0);
 
         var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
         File.Exists(driverFullPath).IsTrue();
@@ -24,8 +23,7 @@ public class BuildTest
     public async Task Publis_NoPublish_Test()
     {
         using var workDir = this.CreateWorkDir();
-        var dotnet = await XProcess.Start("dotnet", "publish -o out", workDir).WaitForExitAsync();
-        dotnet.ExitCode.Is(0);
+        await XProcess.Start("dotnet", "publish -o out", workDir).ExitCodeIs(0);
 
         var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
         File.Exists(driverFullPath).IsFalse();
@@ -35,8 +33,7 @@ public class BuildTest
     public async Task Publish_with_MSBuildProp_Test()
     {
         using var workDir = this.CreateWorkDir();
-        var dotnet = await XProcess.Start("dotnet", "publish -o out -p:PublishIEDriver=true", workDir).WaitForExitAsync();
-        dotnet.ExitCode.Is(0);
+        await XProcess.Start("dotnet", "publish -o out -p:PublishIEDriver=true", workDir).ExitCodeIs(0);
 
         var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
         File.Exists(driverFullPath).IsTrue();
@@ -46,8 +43,7 @@ public class BuildTest
     public async Task Publish_with_DefineConstants_Test()
     {
         using var workDir = this.CreateWorkDir();
-        var dotnet = await XProcess.Start("dotnet", "publish -o out -p:DefineConstants=_PUBLISH_IEDRIVER", workDir).WaitForExitAsync();
-        dotnet.ExitCode.Is(0);
+        await XProcess.Start("dotnet", "publish -o out -p:DefineConstants=_PUBLISH_IEDRIVER", workDir).ExitCodeIs(0);
 
         var driverFullPath = Path.Combine(workDir, "out", "iedriverserver.exe");
         File.Exists(driverFullPath).IsTrue();
