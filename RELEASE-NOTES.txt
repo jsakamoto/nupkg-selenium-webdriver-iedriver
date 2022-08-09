@@ -1,3 +1,5 @@
+v.4.3.0
+- IE Driver 4.3.0 release
 v.4.2.0
 - IE Driver 4.2.0 release
 v.4.0.0.1
