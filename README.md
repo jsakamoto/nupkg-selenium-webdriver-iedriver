@@ -15,7 +15,7 @@ This package is ready for NuGet package restoring, and no need to commit the "IE
 For example, enter the following command at the package manager console on Visual Studio.
 
 ```powershell
-PM> Install-Package Selenium.WebDriver.IEDriver -Version 4.5.0
+PM> Install-Package Selenium.WebDriver.IEDriver
 ```
 
 ## Required Configuration
