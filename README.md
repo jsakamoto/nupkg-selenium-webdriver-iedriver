@@ -10,6 +10,9 @@ This NuGet package installs IE Driver(x86) for Selenium WebDriver into your Unit
 
 This package is ready for NuGet package restoring, and no need to commit the "IEDriverServer.exe" binary into the source code control repository.
 
+> **Warning**  
+> Since Selenium WebDriver version 4.6 was released in November 2022 or later, it has contained ["Selenium Manager"](https://www.selenium.dev/blog/2022/introducing-selenium-manager/), which will automatically download the most suitable version and platform WebDriver executable file. So now, **you can run applications that use Selenium and manipulates web browsers without this package.** However, due to compatibility and some offline scenarios, we intend to keep this package for the time being.
+
 ## How to install? 
 
 For example, enter the following command at the package manager console on Visual Studio.

@@ -1,3 +1,4 @@
 {
-    "xml.format.maxLineWidth": 0
+    "xml.format.maxLineWidth": 0,
+    "dotnet.defaultSolution": "disable"
 }
