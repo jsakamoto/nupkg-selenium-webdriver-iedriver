@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Selenium.WebDriver.IEDriver</id>
-    <version>4.10.0</version>
+    <version>4.11.0</version>
     <authors>jsakamoto</authors>
     <summary>Selenium Internet Explorer Driver (Win32) (this package does not make your source repository too fat.)</summary>
     <description>
@@ -21,8 +21,8 @@
     <readme>README.md</readme>
     <releaseNotes>
       <![CDATA[
-		  v.4.10.0
-	    - IE Driver 4.10.0 release
+		  v.4.11.0
+	    - IE Driver 4.11.0 release
       ]]>
     </releaseNotes>
   </metadata>

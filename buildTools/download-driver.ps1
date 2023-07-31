@@ -1,6 +1,6 @@
 # constants
-$version = "4.10.0"
-$tag = "4.10.0"
+$version = "4.11.0"
+$tag = "4.11.0"
 $driverName = "IEDriverServer.exe"
 $zipName = "IEDriverServer_Win32_$version.zip"
 $downloadurl = "https://github.com/SeleniumHQ/selenium/releases/download/selenium-$tag/$zipName"
